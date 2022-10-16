@@ -25,15 +25,15 @@ public class ParcelEntity {
     @NotNull
     private TrackingInformation.StateEnum state;
     @Valid
-    private List<HopArrivalEntity> visitedHops; //= new ArrayList<>();
+    private List<HopArrivalEntity> visitedHops = new ArrayList<>();
     @Valid
-    private List<HopArrivalEntity> futureHops; //= new ArrayList<>();
+    private List<HopArrivalEntity> futureHops = new ArrayList<>();
 
     // Parcel:
     @NotNull
     private float weight;
     @Valid
-    private RecipientEntity recipientEntity;
+    private RecipientEntity recipient;
     @Valid
-    private RecipientEntity senderEntity;
+    private RecipientEntity sender;
 }
