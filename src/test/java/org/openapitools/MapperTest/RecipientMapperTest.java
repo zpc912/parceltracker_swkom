@@ -1,6 +1,6 @@
 package org.openapitools.MapperTest;
 
-import at.fhtw.swen3.persistence.Recipient;
+import at.fhtw.swen3.services.dto.Recipient;
 import at.fhtw.swen3.persistence.entity.RecipientEntity;
 import at.fhtw.swen3.services.mapper.RecipientMapper;
 import org.junit.jupiter.api.Test;

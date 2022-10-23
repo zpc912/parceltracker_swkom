@@ -1,23 +1,17 @@
 package org.openapitools.MapperTest;
 
-import at.fhtw.swen3.OpenApiGeneratorApplication;
-import at.fhtw.swen3.persistence.*;
 import at.fhtw.swen3.persistence.entity.HopArrivalEntity;
 import at.fhtw.swen3.persistence.entity.ParcelEntity;
 import at.fhtw.swen3.persistence.entity.RecipientEntity;
+import at.fhtw.swen3.services.dto.*;
 import at.fhtw.swen3.services.mapper.ParcelEntityMapper;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;

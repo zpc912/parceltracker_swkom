@@ -1,8 +1,6 @@
 package at.fhtw.swen3.persistence.entity;
 
-import at.fhtw.swen3.persistence.HopArrival;
-import at.fhtw.swen3.persistence.Recipient;
-import at.fhtw.swen3.persistence.TrackingInformation;
+import at.fhtw.swen3.services.dto.TrackingInformation;
 import lombok.*;
 
 import javax.validation.Valid;
