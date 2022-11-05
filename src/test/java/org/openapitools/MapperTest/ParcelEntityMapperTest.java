@@ -1,10 +1,11 @@
 package org.openapitools.MapperTest;
 
-import at.fhtw.swen3.persistence.entity.HopArrivalEntity;
-import at.fhtw.swen3.persistence.entity.ParcelEntity;
-import at.fhtw.swen3.persistence.entity.RecipientEntity;
+import at.fhtw.swen3.persistence.entities.HopArrivalEntity;
+import at.fhtw.swen3.persistence.entities.ParcelEntity;
+import at.fhtw.swen3.persistence.entities.RecipientEntity;
+import at.fhtw.swen3.persistence.enums.StateEnum;
 import at.fhtw.swen3.services.dto.*;
-import at.fhtw.swen3.services.mapper.ParcelEntityMapper;
+import at.fhtw.swen3.services.mapper.ParcelMapper;
 import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
@@ -51,7 +52,7 @@ public class ParcelEntityMapperTest {
         parcel.setSender(sender);
         parcel.setWeight(12.0f);
 
-        ParcelEntity parcelEntity = ParcelEntityMapper.INSTANCE.DtoToEntity(newParcelInfo, trackingInformation, parcel);
+        ParcelEntity parcelEntity = ParcelMapper.INSTANCE.dtoToEntity(newParcelInfo, trackingInformation, parcel);
 
         assertNotNull(parcelEntity);
         assertEquals(newParcelInfo.getTrackingId(), parcelEntity.getTrackingId());
@@ -67,7 +68,7 @@ public class ParcelEntityMapperTest {
         ParcelEntity parcelEntity = new ParcelEntity();
         parcelEntity.setTrackingId("PYJRB4HZ6");
 
-        NewParcelInfo newParcelInfo = ParcelEntityMapper.INSTANCE.entityToNewParcelInfoDto(parcelEntity);
+        NewParcelInfo newParcelInfo = ParcelMapper.INSTANCE.entityToNewParcelInfoDto(parcelEntity);
 
         assertEquals(parcelEntity.getTrackingId(), newParcelInfo.getTrackingId());
     }
@@ -76,7 +77,7 @@ public class ParcelEntityMapperTest {
     @Test
     void entityToTrackingInformationDtoTest() {
         ParcelEntity parcelEntity = new ParcelEntity();
-        parcelEntity.setState(TrackingInformation.StateEnum.INTRANSPORT);
+        parcelEntity.setState(StateEnum.INTRANSPORT);
         HopArrivalEntity hopArrivalEntity = new HopArrivalEntity();
         hopArrivalEntity.setCode("PYJRB4HZ6");
         hopArrivalEntity.setDescription("Warehouse 12-27");
@@ -84,7 +85,7 @@ public class ParcelEntityMapperTest {
         parcelEntity.getVisitedHops().add(hopArrivalEntity);
         parcelEntity.getFutureHops().add(hopArrivalEntity);
 
-        TrackingInformation trackingInformation = ParcelEntityMapper.INSTANCE.entityToTrackingInformationDto(parcelEntity);
+        TrackingInformation trackingInformation = ParcelMapper.INSTANCE.entityToTrackingInformationDto(parcelEntity);
 
         assertEquals(parcelEntity.getState(), trackingInformation.getState());
         assertEquals(parcelEntity.getVisitedHops().get(0).getCode(), trackingInformation.getVisitedHops().get(0).getCode());
@@ -112,7 +113,7 @@ public class ParcelEntityMapperTest {
         parcelEntity.setRecipient(recipient);
         parcelEntity.setSender(sender);
 
-        Parcel parcel = ParcelEntityMapper.INSTANCE.entityToParcelDto(parcelEntity);
+        Parcel parcel = ParcelMapper.INSTANCE.entityToParcelDto(parcelEntity);
 
         assertEquals(parcelEntity.getWeight(), parcel.getWeight());
         assertEquals(parcelEntity.getRecipient().getCity(), parcel.getRecipient().getCity());
