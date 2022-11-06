@@ -12,26 +12,28 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class ParcelEntityMapperTest {
+public class ParcelMapperTest {
 
     @Test
-    void DtoToEntityTest() {
+    void dtoToEntityTest() {
         NewParcelInfo newParcelInfo = new NewParcelInfo();
         newParcelInfo.setTrackingId("PYJRB4HZ6");
 
         TrackingInformation trackingInformation = new TrackingInformation();
         HopArrival visitedHops = new HopArrival();
         HopArrival futureHops = new HopArrival();
-        TrackingInformation.StateEnum stateEnum = TrackingInformation.StateEnum.INTRANSPORT;
+        trackingInformation.setState(StateEnum.INTRANSPORT);
         trackingInformation.addVisitedHopsItem(visitedHops);
         trackingInformation.addFutureHopsItem(futureHops);
-        trackingInformation.setState(stateEnum);
 
         Parcel parcel = new Parcel();
         Recipient recipient = new Recipient();
@@ -56,7 +58,7 @@ public class ParcelEntityMapperTest {
 
         assertNotNull(parcelEntity);
         assertEquals(newParcelInfo.getTrackingId(), parcelEntity.getTrackingId());
-        assertNotNull(stateEnum);
+        assertNotNull(parcelEntity.getState());
         assertEquals(parcel.getRecipient().getCity(), parcelEntity.getRecipient().getCity());
         assertEquals(parcel.getSender().getCity(), parcelEntity.getSender().getCity());
         assertEquals(12.0f, parcelEntity.getWeight());
@@ -64,7 +66,7 @@ public class ParcelEntityMapperTest {
 
 
     @Test
-    void entityToNewParcelInfoDto() {
+    void entityToNewParcelInfoDtoTest() {
         ParcelEntity parcelEntity = new ParcelEntity();
         parcelEntity.setTrackingId("PYJRB4HZ6");
 
@@ -97,6 +99,7 @@ public class ParcelEntityMapperTest {
     @Test
     void entityToParcelDtoTest() {
         ParcelEntity parcelEntity = new ParcelEntity();
+        parcelEntity.setId(1l);
         parcelEntity.setWeight(12.0f);
         RecipientEntity recipient = new RecipientEntity();
         recipient.setCity("Wien");
@@ -112,6 +115,12 @@ public class ParcelEntityMapperTest {
         sender.setPostalCode("A-1220");
         parcelEntity.setRecipient(recipient);
         parcelEntity.setSender(sender);
+
+        List<HopArrivalEntity> visitedHops = new ArrayList<>();
+        parcelEntity.setVisitedHops(visitedHops);
+
+        List<HopArrivalEntity> futureHops = new ArrayList<>();
+        parcelEntity.setFutureHops(futureHops);
 
         Parcel parcel = ParcelMapper.INSTANCE.entityToParcelDto(parcelEntity);
 
@@ -129,16 +138,16 @@ public class ParcelEntityMapperTest {
     }
 
     @Test
-    void testValidationFalse() {
+    void ValidationFalseTest() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
 
         RecipientEntity recipient = new RecipientEntity();
-        recipient.setCity("Wien");
         recipient.setName("Max");
-        recipient.setCountry("Österreich");
         recipient.setStreet("Mariahilfer Straße 120");
         recipient.setPostalCode("A-1070");
+        recipient.setCity("Wien");
+        recipient.setCountry("Österreich");
 
         Set<ConstraintViolation<RecipientEntity>> violations = validator.validate(recipient);
         assertFalse(violations.isEmpty());
