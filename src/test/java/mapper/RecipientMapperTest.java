@@ -1,4 +1,4 @@
-package org.openapitools.MapperTest;
+package mapper;
 
 import at.fhtw.swen3.persistence.entities.RecipientEntity;
 import at.fhtw.swen3.services.dto.Recipient;

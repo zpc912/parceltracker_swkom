@@ -22,29 +22,27 @@ public class ParcelEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "trackingId")
-    @NotNull(message = "Tracking ID cannot be null")
-    @NotBlank(message = "Tracking ID cannot be empty")
+    @Column
+    @Pattern(regexp = "^[A-Z0-9]{9}$")
     private String trackingId;
 
-    @Column(name = "weight")
+    @Column
     @DecimalMin("0.0")
     private Float weight;
 
-    @Column(name = "recipient")
-    @NotNull(message = "Recipient cannot be null")
+    @Column
     @ManyToOne
-    @JoinColumn(name = "id_recipient")
+    @JoinColumn(name = "fk_recipient")
+    @NotNull(message = "Recipient cannot be null")
     private RecipientEntity recipient;
 
-    @Column(name = "sender")
-    @NotNull(message = "Sender cannot be null")
+    @Column
     @ManyToOne
-    @JoinColumn(name = "id_sender")
+    @JoinColumn(name = "fk_sender")
+    @NotNull(message = "Sender cannot be null")
     private RecipientEntity sender;
 
-    @Column(name = "state")
-    @NotNull(message = "State cannot be null")
+    @Column
     private StateEnum state;
 
     @OneToMany

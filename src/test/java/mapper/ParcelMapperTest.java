@@ -1,4 +1,4 @@
-package org.openapitools.MapperTest;
+package mapper;
 
 import at.fhtw.swen3.persistence.entities.HopArrivalEntity;
 import at.fhtw.swen3.persistence.entities.ParcelEntity;
@@ -8,15 +8,9 @@ import at.fhtw.swen3.services.dto.*;
 import at.fhtw.swen3.services.mapper.ParcelMapper;
 import org.junit.jupiter.api.Test;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -137,7 +131,7 @@ public class ParcelMapperTest {
         assertEquals(parcelEntity.getSender().getPostalCode(), parcel.getSender().getPostalCode());
     }
 
-    @Test
+    /*@Test
     void ValidationFalseTest() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -156,5 +150,5 @@ public class ParcelMapperTest {
         assertEquals(recipient.getCountry(), "Österreich");
         assertEquals(recipient.getStreet(), "Mariahilfer Straße 120");
         assertEquals(recipient.getPostalCode(), "A-1070");
-    }
+    }*/
 }

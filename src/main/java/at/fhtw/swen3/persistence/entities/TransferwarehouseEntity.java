@@ -20,18 +20,12 @@ public class TransferwarehouseEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "regionGeoJson")
-    @NotNull(message = "Region Geo Json cannot be null")
-    @NotBlank(message = "Region Geo Json cannot be empty")
+    @Column
     private String regionGeoJson;
 
-    @Column(name = "logisticsPartner")
-    @NotNull(message = "Logistics Partner cannot be null")
-    @NotBlank(message = "Logistics Partner cannot be empty")
+    @Column
     private String logisticsPartner;
 
-    @Column(name = "logisticsPartnerUrl")
-    @NotNull(message = "Logistics Partner Url cannot be null")
-    @NotBlank(message = "Logistics Partner Url cannot be empty")
+    @Column
     private String logisticsPartnerUrl;
 }

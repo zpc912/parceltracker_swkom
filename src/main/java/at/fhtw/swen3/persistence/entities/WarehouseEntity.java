@@ -21,11 +21,10 @@ public class WarehouseEntity {
     @Column(name = "id", nullable = true)
     private Long id;
 
-    @Column(name = "level")
+    @Column
     private Integer level;
 
-    @Column(name = "nextHops")
-    @NotNull(message = "Next Hops cannot be null")
+    @Column
     @OneToMany
     private List<WarehouseNextHopsEntity> nextHops = new ArrayList<>();
 }

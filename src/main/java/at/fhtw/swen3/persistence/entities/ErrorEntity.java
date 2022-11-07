@@ -19,9 +19,6 @@ public class ErrorEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "errorMessage")
-    @NotNull(message = "Error message cannot be null")
-    @NotBlank(message = "Error message cannot be empty")
-    @Size(min = 1, max = 300)
+    @Column
     private String errorMessage;
 }

@@ -22,35 +22,23 @@ public class HopEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "hopType")
-    @NotNull(message = "HopType cannot be null")
-    @NotBlank(message = "HopType cannot be empty")
+    @Column
     private String hopType;
 
     @Column(name = "code")
-    @NotNull(message = "Code cannot be null")
-    @NotBlank(message = "Code cannot be empty")
+    @Pattern(regexp = "^[A-Za-zÄÖÜäöüß0-9\\s\\-]+$")
     private String code;
 
-    @Column(name = "description")
-    @NotNull(message = "Code cannot be null")
-    @NotBlank(message = "Code cannot be empty")
-    @Size(min = 1, max = 300)
+    @Column
     private String description;
 
-    @Column(name = "processingDelayMins")
-    @NotNull(message = "Processing Delay Mins cannot be null")
-    @NotBlank(message = "Processing Delay Mins cannot be empty")
-    @Min(0)
+    @Column
     private Integer processingDelayMins;
 
-    @Column(name = "location")
-    @NotNull(message = "Location name cannot be null")
-    @NotBlank(message = "Location name cannot be empty")
+    @Column
     private String locationName;
 
-    @Column(name = "locationCoordinates")
-    @ManyToOne
-    @JoinColumn(name = "id_locationCoordinates")
+    @Column
+    @OneToOne
     private GeoCoordinateEntity locationCoordinates;
 }

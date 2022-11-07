@@ -19,28 +19,22 @@ public class RecipientEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "name")
-    @NotNull(message = "Name cannot be null")
-    @NotBlank(message = "Name cannot be empty")
+    @Column
+    @Pattern(regexp = "^[A-ZÄÖÜ][a-zäöüß]+\\.?\\s?([A-ZÄÖÜ][a-zäöüß]+)*$")
     private String name;
 
-    @Column(name = "street")
-    @NotNull(message = "Street cannot be null")
-    @NotBlank(message = "Street cannot be empty")
+    @Column
+    @Pattern(regexp = "[A-Za-zÄÖÜäöüß]+\\s[0-9A-Za-zÄÖÜäöüß/\\s]+")
     private String street;
 
-    @Column(name = "postalCode")
-    @NotNull(message = "Postal code cannot be null")
-    @NotBlank(message = "Postal code cannot be empty")
+    @Column
+    @Pattern(regexp = "^[AD]-\\d{4}$")
     private String postalCode;
 
-    @Column(name = "city")
-    @NotNull(message = "City cannot be null")
-    @NotBlank(message = "City cannot be empty")
+    @Column
+    @Pattern(regexp = "^[A-ZÄÖÜ][a-zäöüß]+\\.?\\s?([A-ZÄÖÜ][a-zäöüß]+)*$")
     private String city;
 
-    @Column(name = "country")
-    @NotNull(message = "Country cannot be null")
-    @NotBlank(message = "Country cannot be empty")
+    @Column
     private String country;
 }

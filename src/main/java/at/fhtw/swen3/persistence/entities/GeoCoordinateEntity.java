@@ -18,9 +18,9 @@ public class GeoCoordinateEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "lat")
+    @Column
     private Double lat;
 
-    @Column(name = "lon")
+    @Column
     private Double lon;
 }

@@ -19,13 +19,9 @@ public class TruckEntity {
     @Column(name = "id", nullable = true)
     private Long id;
 
-    @Column(name = "regionGeoJson")
-    @NotNull(message = "Region Geo Json cannot be null")
-    @NotBlank(message = "Region Geo Json cannot be empty")
+    @Column
     private String regionGeoJson;
 
-    @Column(name = "numberPlate")
-    @NotNull(message = "Number plate cannot be null")
-    @NotBlank(message = "Number plate cannot be empty")
+    @Column
     private String numberPlate;
 }

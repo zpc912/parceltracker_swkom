@@ -18,11 +18,11 @@ public class WarehouseNextHopsEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "traveltimeMins")
+    @Column
     private Integer traveltimeMins;
 
-    @Column(name = "hop")
-    @OneToOne
-    @JoinColumn(name = "id_hop")
+    @Column
+    @ManyToOne
+    @JoinColumn(name = "fk_warehouse")
     private HopEntity hop;
 }
