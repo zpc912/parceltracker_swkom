@@ -2,6 +2,7 @@ package at.fhtw.swen3.services.dto;
 
 import java.util.Objects;
 
+import at.fhtw.swen3.persistence.enums.StateEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -27,7 +28,7 @@ public class TrackingInformation {
   /**
    * State of the parcel.
    */
-  public enum StateEnum {
+  /*public enum StateEnum {
     PICKUP("Pickup"),
     
     INTRANSPORT("InTransport"),
@@ -63,7 +64,7 @@ public class TrackingInformation {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-  }
+  }*/
 
   @JsonProperty("state")
   private StateEnum state;
