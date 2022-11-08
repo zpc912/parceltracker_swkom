@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class ErrorRepositoryTest {
-    @Autowired
+    /*@Autowired
     private ErrorRepository errorRepository;
 
     public ErrorEntity errorEntity;
@@ -35,5 +35,5 @@ public class ErrorRepositoryTest {
         errorRepository.save(errorEntity);
 
         assertEquals(1, errorRepository.count());
-    }
+    }*/
 }
