@@ -1,6 +1,7 @@
 package at.fhtw.swen3.persistence.entities;
 
 import at.fhtw.swen3.persistence.enums.StateEnum;
+import at.fhtw.swen3.services.dto.TrackingInformation;
 import lombok.*;
 
 import javax.persistence.*;
@@ -52,4 +53,30 @@ public class ParcelEntity {
     @OneToMany
     @NotNull(message = "Future Hops cannot be null")
     private List<HopArrivalEntity> futureHops = new ArrayList<>();
+
+
+    public ParcelEntity weight(Float weight) {
+        this.weight = weight;
+        return this;
+    }
+
+    public ParcelEntity recipient(RecipientEntity recipientEntity) {
+        this.recipient = recipientEntity;
+        return this;
+    }
+
+    public ParcelEntity sender(RecipientEntity recipientEntity) {
+        this.sender = recipientEntity;
+        return this;
+    }
+
+    public ParcelEntity trackingId(String trackingId) {
+        this.trackingId = trackingId;
+        return this;
+    }
+
+    public ParcelEntity state(StateEnum state) {
+        this.state = state;
+        return this;
+    }
 }
