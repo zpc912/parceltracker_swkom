@@ -1,4 +1,4 @@
-package repositories;
+package at.fhtw.swen3.persistence.repositories;
 
 import at.fhtw.swen3.persistence.entities.ErrorEntity;
 import at.fhtw.swen3.persistence.repositories.ErrorRepository;
@@ -9,31 +9,27 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+@SpringBootTest(classes={ErrorRepository.class})
 public class ErrorRepositoryTest {
-    /*@Autowired
+    @Autowired
     private ErrorRepository errorRepository;
 
-    public ErrorEntity errorEntity;
+    private ErrorEntity errorEntity;
 
 
     @BeforeEach
     void init() {
         errorRepository.deleteAll();
         errorEntity = ErrorEntity.builder()
-                .errorMessage("An error occurred")
+                .errorMessage("Test Error")
                 .build();
     }
 
 
     @Test
     void saveNewErrorTest() {
-        ErrorEntity errorEntity = ErrorEntity.builder()
-                .errorMessage("An error occurred")
-                .build();
-
         errorRepository.save(errorEntity);
 
         assertEquals(1, errorRepository.count());
-    }*/
+    }
 }

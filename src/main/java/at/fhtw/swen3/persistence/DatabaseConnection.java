@@ -12,9 +12,9 @@ public class DatabaseConnection {
 
 
     public DatabaseConnection() {
-        dbUrl = ConfigurationManager.getConfigProperty("dbUrl");
-        dbUsername = ConfigurationManager.getConfigProperty("dbUsername");
-        dbPassword = ConfigurationManager.getConfigProperty("dbPassword");
+        dbUrl = ConfigurationManager.getConfigProperty("spring.datasource.url");
+        dbUsername = ConfigurationManager.getConfigProperty("spring.datasource.username");
+        dbPassword = ConfigurationManager.getConfigProperty("spring.datasource.password");
     }
 
 

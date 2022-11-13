@@ -21,7 +21,6 @@ public class WarehouseNextHopsEntity {
     @Column
     private Integer traveltimeMins;
 
-    @Column
     @ManyToOne
     @JoinColumn(name = "fk_warehouse")
     private HopEntity hop;
