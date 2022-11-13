@@ -14,8 +14,8 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-11-08T00:01:51+0100",
-    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
+    date = "2022-11-13T15:50:57+0100",
+    comments = "version: 1.5.2.Final, compiler: javac, environment: Java 17.0.4.1 (Red Hat, Inc.)"
 )
 public class WarehouseMapperImpl implements WarehouseMapper {
 

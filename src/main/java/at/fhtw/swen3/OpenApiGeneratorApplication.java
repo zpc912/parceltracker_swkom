@@ -1,5 +1,7 @@
 package at.fhtw.swen3;
 
+import at.fhtw.swen3.persistence.entities.ErrorEntity;
+import at.fhtw.swen3.services.impl.ErrorServiceImpl;
 import com.fasterxml.jackson.databind.Module;
 import lombok.extern.slf4j.Slf4j;
 import org.openapitools.jackson.nullable.JsonNullableModule;
@@ -17,6 +19,10 @@ public class OpenApiGeneratorApplication {
     public static void main(String[] args) {
         SpringApplication.run(OpenApiGeneratorApplication.class, args);
         log.info("Starting up application");
+        ErrorServiceImpl service = new ErrorServiceImpl();
+        ErrorEntity errorEntity = ErrorEntity.builder().errorMessage("Error Msg").build();
+        service.saveErrorEntity(errorEntity);
+        System.out.println(service.listAllErrors());
     }
 
     @Bean
