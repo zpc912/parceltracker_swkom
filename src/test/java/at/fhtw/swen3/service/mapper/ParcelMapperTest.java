@@ -1,4 +1,4 @@
-package mapper;
+package at.fhtw.swen3.service.mapper;
 
 import at.fhtw.swen3.persistence.entities.HopArrivalEntity;
 import at.fhtw.swen3.persistence.entities.ParcelEntity;
