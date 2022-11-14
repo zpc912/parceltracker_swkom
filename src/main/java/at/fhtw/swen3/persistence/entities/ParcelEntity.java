@@ -30,13 +30,11 @@ public class ParcelEntity {
     @DecimalMin("0.0")
     private Float weight;
 
-    @Column
     @ManyToOne
     @JoinColumn(name = "fk_recipient")
     @NotNull(message = "Recipient cannot be null")
     private RecipientEntity recipient;
 
-    @Column
     @ManyToOne
     @JoinColumn(name = "fk_sender")
     @NotNull(message = "Sender cannot be null")
