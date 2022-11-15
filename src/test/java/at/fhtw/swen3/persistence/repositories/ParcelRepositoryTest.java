@@ -67,7 +67,6 @@ public class ParcelRepositoryTest {
 
     @Test
     void saveTest() {
-        //ParcelEntity parcel =
         parcelRepository.save(parcelEntity);
         //recipientRepository.save(sender);
         //recipientRepository.save(recipient);
