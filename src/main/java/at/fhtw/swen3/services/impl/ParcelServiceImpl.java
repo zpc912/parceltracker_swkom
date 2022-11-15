@@ -9,23 +9,16 @@ import at.fhtw.swen3.services.mapper.ParcelMapper;
 import at.fhtw.swen3.services.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 @RequiredArgsConstructor
-@Service
 @Slf4j
 public class ParcelServiceImpl implements ParcelService {
     private final Validator validator;
-
-    @Autowired
     private final ParcelRepository parcelRepository;
-
-    @Autowired
     private final RecipientRepository recipientRepository;
 
 

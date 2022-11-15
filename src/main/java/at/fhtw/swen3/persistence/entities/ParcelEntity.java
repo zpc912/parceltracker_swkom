@@ -30,12 +30,12 @@ public class ParcelEntity {
     @DecimalMin("0.0")
     private Float weight;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_recipient")
     @NotNull(message = "Recipient cannot be null")
     private RecipientEntity recipient;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_sender")
     @NotNull(message = "Sender cannot be null")
     private RecipientEntity sender;
@@ -43,11 +43,11 @@ public class ParcelEntity {
     @Column
     private StateEnum state;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @NotNull(message = "Visited Hops cannot be null")
     private List<HopArrivalEntity> visitedHops = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @NotNull(message = "Future Hops cannot be null")
     private List<HopArrivalEntity> futureHops = new ArrayList<>();
 }

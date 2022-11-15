@@ -13,10 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
-@Service
 @Slf4j
 public class ErrorServiceImpl implements ErrorService {
-    @Autowired
     private final ErrorRepository errorRepository;
 
 
