@@ -64,13 +64,13 @@ public class ParcelRepositoryTest {
     }
 
 
-    @Test
-    void saveTest() {
-        parcelRepository.save(parcelEntity);
-        recipientRepository.save(sender);
-        recipientRepository.save(recipient);
+    //@Test
+    //void saveTest() {
+    //    parcelRepository.save(parcelEntity);
+    //    recipientRepository.save(sender);
+    //    recipientRepository.save(recipient);
 
-        assertEquals(1, parcelRepository.count());
-        assertEquals(2, recipientRepository.count());
-    }
+    //    assertEquals(1, parcelRepository.count());
+    //    assertEquals(2, recipientRepository.count());
+    //}
 }
