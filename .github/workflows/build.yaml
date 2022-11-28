@@ -40,7 +40,7 @@ jobs:
           TEST: hello world
         run: |
           echo ${{ secrets.DB_USER }}
-          echo $TEST
+          echo $PASSWORD
           sed -i 's/USER_HOLDER/${USER}/g;s/PASS_HOLDER/${PASSWORD}/g' /home/runner/work/parceltracker_swkom/parceltracker_swkom/src/main/resources/application.properties
       #Run Tests
       - name: Run Tests
