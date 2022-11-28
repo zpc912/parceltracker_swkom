@@ -38,9 +38,9 @@ jobs:
           USER: ${{ secrets.DB_USER }}
           PASSWORD: ${{ secrets.DB_PASS }}
         run: |
-          echo $USER
+          echo ${{ secrets.DB_USER }}
           echo $PASSWORD
-          sed -i s/USER_HOLDER/${USER}/g;s/PASS_HOLDER/${PASSWORD}/g /home/runner/work/parceltracker_swkom/parceltracker_swkom/src/main/resources/application.properties
+          sed -i 's/USER_HOLDER/${USER}/g;s/PASS_HOLDER/${PASSWORD}/g' /home/runner/work/parceltracker_swkom/parceltracker_swkom/src/main/resources/application.properties
       #Run Tests
       - name: Run Tests
         run: mvn -B test
