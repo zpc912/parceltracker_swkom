@@ -2,8 +2,11 @@ package at.fhtw.swen3.services.impl;
 
 
 import at.fhtw.swen3.services.ParcelApi;
+import at.fhtw.swen3.services.dto.NewParcelInfo;
+import at.fhtw.swen3.services.dto.Parcel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.request.NativeWebRequest;
 
@@ -27,4 +30,8 @@ public class ParcelApiController implements ParcelApi {
         return Optional.ofNullable(request);
     }
 
+    @Override
+    public ResponseEntity<NewParcelInfo> submitParcel(Parcel parcel) {
+        return ParcelApi.super.submitParcel(parcel);
+    }
 }

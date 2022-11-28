@@ -33,8 +33,8 @@ public class ParcelRepositoryTest {
 
     @BeforeEach
     void init() {
-        parcelRepository.deleteAll();
-        recipientRepository.deleteAll();
+        //parcelRepository.deleteAll();
+        //recipientRepository.deleteAll();
 
         List<HopArrivalEntity> visitedHops = new ArrayList<>();
         List<HopArrivalEntity> futureHops = new ArrayList<>();
