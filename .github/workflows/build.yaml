@@ -35,7 +35,7 @@ jobs:
       ################
       - name: Adding Secrets
         run: |
-          sed -i 's/~~~/${secrets.DB_USER}/g;s/***/${secrets.DB_PASS}/g' src/main/resources/application.properties
+          sed -i 's/~~~/${secrets.DB_USER}/g;s/***/${secrets.DB_PASS}/g' /home/runner/work/parceltracker_swkom/parceltracker_swkom/src/main/resources/application.properties
       #Run Tests
       - name: Run Tests
         run: mvn -B test
