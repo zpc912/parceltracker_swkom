@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public interface ErrorService {
 
     void submitNewError(ErrorEntity errorEntity);

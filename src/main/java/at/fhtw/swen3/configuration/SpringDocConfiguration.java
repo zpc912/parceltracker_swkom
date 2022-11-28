@@ -38,7 +38,7 @@ public class SpringDocConfiguration {
     }
 
 
-    @Primary
+   /* @Primary
     @Bean
     public ParcelServiceImpl parcelService(Validator validator, ParcelRepository parcelRepository, RecipientRepository recipientRepository) {
         return new ParcelServiceImpl(validator, parcelRepository, recipientRepository);
@@ -49,5 +49,5 @@ public class SpringDocConfiguration {
     @Bean
     public ErrorServiceImpl errorService(ErrorRepository errorRepository) {
         return new ErrorServiceImpl(errorRepository);
-    }
+    }*/
 }

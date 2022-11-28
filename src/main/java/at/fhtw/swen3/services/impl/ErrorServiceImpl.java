@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
-@Service
+//@Service
 @Slf4j
 public class ErrorServiceImpl implements ErrorService {
     @Autowired
@@ -54,5 +54,10 @@ public class ErrorServiceImpl implements ErrorService {
         this.errorRepository.deleteById(id);
 
         log.info("Error with ID " + id + " deleted");
+    }
+
+    public void deleteAllErrors(){
+        this.errorRepository.deleteAll();
+        log.info("All errors are deleted");
     }
 }

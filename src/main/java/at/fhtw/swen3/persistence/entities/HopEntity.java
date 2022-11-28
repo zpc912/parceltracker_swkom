@@ -3,7 +3,7 @@ package at.fhtw.swen3.persistence.entities;
 import com.vividsolutions.jts.geom.Point;
 import lombok.*;
 import org.hibernate.annotations.Type;
-import org.locationtech.jts.geom.Coordinates;
+//import org.locationtech.jts.geom.Coordinates;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
