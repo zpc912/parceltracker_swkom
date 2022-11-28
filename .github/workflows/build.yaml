@@ -35,11 +35,11 @@ jobs:
       ################
       - name: Adding Secrets
         env:
-          USER: ${{ secrets.DB_USER }}
-          PASSWORD: ${{ secrets.DB_PASS }}
+          USER: ${{ env.DB_USER }}
+          PASSWORD: ${{ env.DB_PASS }}
           TEST: hello world
         run: |
-          echo ${{ secrets.DB_USER }}
+          echo $USER
           echo $PASSWORD
           sed -i 's/USER_HOLDER/${USER}/g;s/PASS_HOLDER/${PASSWORD}/g' /home/runner/work/parceltracker_swkom/parceltracker_swkom/src/main/resources/application.properties
       #Run Tests
