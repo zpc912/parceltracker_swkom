@@ -14,6 +14,7 @@ jobs:
     #Run on Ubuntu using the latest version
     runs-on: ubuntu-latest
     #Job's steps
+    environment: DATABASE
     steps:
       #Check-out your repository under $GITHUB_WORKSPACE, so your workflow can access it
       - uses: actions/checkout@v1
