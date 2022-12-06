@@ -39,5 +39,6 @@ public class HopEntity {
     private String locationName;
 
     @OneToOne
+    @JoinColumn(name = "fk_location_coordinates")
     private GeoCoordinateEntity locationCoordinates;
 }
