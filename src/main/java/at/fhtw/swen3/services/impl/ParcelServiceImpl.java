@@ -23,36 +23,16 @@ public class ParcelServiceImpl implements ParcelService {
     private final RecipientRepository recipientRepository;
 
 
-    /*@Override
+    @Override
     public NewParcelInfo submitNewParcel(ParcelEntity parcelEntity) {
-        NewParcelInfo newParcelInfo = new NewParcelInfo();
-
-        parcelEntity.setTrackingId("PYJRB4HZ6");
-        log.info("Tracking ID for new Parcel: PYJRB4HZ6");
-
-        parcelEntity.setFutureHops(new ArrayList<>());
-        parcelEntity.setVisitedHops(new ArrayList<>());
-
-        this.validator.validate(parcelEntity);
-
         this.recipientRepository.save(parcelEntity.getSender());
         this.recipientRepository.save(parcelEntity.getRecipient());
         this.parcelRepository.save(parcelEntity);
 
-        newParcelInfo = ParcelMapper.INSTANCE.entityToNewParcelInfoDto(parcelEntity);
-        log.info("New parcel submitted: " + parcelEntity);
+        NewParcelInfo newParcelInfo = ParcelMapper.INSTANCE.entityToNewParcelInfoDto(parcelEntity);
+        log.info("New parcel submitted: " + parcelEntity.getTrackingId());
 
         return newParcelInfo;
-    }*/
-
-
-    @Override
-    public ParcelEntity submitNewParcel(Parcel parcel) {
-        ParcelEntity parcelEntity = ParcelMapper.INSTANCE.dtoToEntity(null, null, parcel);
-        parcelRepository.save(parcelEntity);
-        log.info("New Parcel submitted");
-
-        return parcelEntity;
     }
 
 
