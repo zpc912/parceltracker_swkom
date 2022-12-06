@@ -26,5 +26,6 @@ public class WarehouseEntity {
 
     @Column
     @OneToMany
+    @JoinColumn(name = "fk_next_hops")
     private List<WarehouseNextHopsEntity> nextHops = new ArrayList<>();
 }

@@ -44,10 +44,12 @@ public class ParcelEntity {
     private StateEnum state;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_visited_hops")
     @NotNull(message = "Visited Hops cannot be null")
     private List<HopArrivalEntity> visitedHops = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     @NotNull(message = "Future Hops cannot be null")
+    @JoinColumn(name = "fk_furture_hops")
     private List<HopArrivalEntity> futureHops = new ArrayList<>();
 }
