@@ -24,4 +24,8 @@ public class WarehouseNextHopsEntity {
     @ManyToOne
     @JoinColumn(name = "fk_warehouse")
     private HopEntity hop;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade=CascadeType.PERSIST)
+    @JoinColumn(name = "warehouse_id")
+    private HopEntity warehouse;
 }

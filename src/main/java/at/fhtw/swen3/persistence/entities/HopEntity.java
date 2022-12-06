@@ -1,9 +1,6 @@
 package at.fhtw.swen3.persistence.entities;
 
-import com.vividsolutions.jts.geom.Point;
 import lombok.*;
-import org.hibernate.annotations.Type;
-import org.locationtech.jts.geom.Coordinates;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -41,4 +38,13 @@ public class HopEntity {
     @OneToOne
     @JoinColumn(name = "fk_location_coordinates")
     private GeoCoordinateEntity locationCoordinates;
+
+    public HopEntity(String code, String hopType, String description, Integer processingDelayMins, String locationName, GeoCoordinateEntity locationCoordinates) {
+        this.code = code;
+        this.hopType = hopType;
+        this.description = description;
+        this.processingDelayMins = processingDelayMins;
+        this.locationName = locationName;
+        this.locationCoordinates = locationCoordinates;
+    }
 }
