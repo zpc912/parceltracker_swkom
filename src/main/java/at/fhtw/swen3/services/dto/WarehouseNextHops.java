@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 
 
 import javax.annotation.Generated;
@@ -18,6 +19,7 @@ import javax.annotation.Generated;
 
 @JsonTypeName("warehouse_allOf_nextHops")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-10-15T20:24:14.874537Z[Etc/UTC]")
+@Builder
 public class WarehouseNextHops {
 
   @JsonProperty("traveltimeMins")

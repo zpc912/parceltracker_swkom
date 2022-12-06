@@ -2,6 +2,7 @@ package at.fhtw.swen3.services.impl;
 
 
 import at.fhtw.swen3.services.ParcelApi;
+import at.fhtw.swen3.services.ParcelService;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
 import lombok.extern.slf4j.Slf4j;
@@ -19,9 +20,11 @@ import javax.annotation.Generated;
 public class ParcelApiController implements ParcelApi {
 
     private final NativeWebRequest request;
+    private ParcelService parcelService;
 
     @Autowired
-    public ParcelApiController(NativeWebRequest request) {
+    public ParcelApiController(NativeWebRequest request, ParcelService parcelService) {
+        this.parcelService = parcelService;
         this.request = request;
     }
 
@@ -31,7 +34,8 @@ public class ParcelApiController implements ParcelApi {
     }
 
     @Override
-    public ResponseEntity<NewParcelInfo> submitParcel(Parcel parcel) {
+    public ResponseEntity<NewParcelInfo> submitParcel(Parcel parcel)
+    {
         return ParcelApi.super.submitParcel(parcel);
     }
 }
