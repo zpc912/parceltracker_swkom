@@ -59,7 +59,7 @@ public class ParcelApiController implements ParcelApi {
         TrackingInformation trackingInformation = new TrackingInformation();
         ParcelEntity parcelEntity = ParcelMapper.INSTANCE.dtoToEntity(newParcelInfo, trackingInformation, parcel);
 
-        newParcelInfo = parcelService.submitNewParcel(parcelEntity);
+        parcelEntity = parcelService.submitNewParcel(parcel);
         return new ResponseEntity<NewParcelInfo>(newParcelInfo, HttpStatus.OK);
     }
 }

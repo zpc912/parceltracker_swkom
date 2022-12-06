@@ -47,10 +47,12 @@ public class ParcelServiceImpl implements ParcelService {
 
 
     @Override
-    public NewParcelInfo submitNewParcel(Parcel parcel) {
+    public ParcelEntity submitNewParcel(Parcel parcel) {
         ParcelEntity parcelEntity = ParcelMapper.INSTANCE.dtoToEntity(null, null, parcel);
         parcelRepository.save(parcelEntity);
         log.info("New Parcel submitted");
+
+        return parcelEntity;
     }
 
 
