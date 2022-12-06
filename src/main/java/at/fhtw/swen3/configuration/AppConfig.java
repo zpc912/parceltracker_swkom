@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    @Bean
+    /*@Bean
     public ParcelServiceImpl parcelService(Validator validator, ParcelRepository parcelRepository, RecipientRepository recipientRepository) {
         return new ParcelServiceImpl(validator, parcelRepository, recipientRepository);
     }
@@ -21,5 +21,5 @@ public class AppConfig {
     @Bean
     public ErrorServiceImpl errorService(ErrorRepository errorRepository) {
         return new ErrorServiceImpl(errorRepository);
-    }
+    }*/
 }

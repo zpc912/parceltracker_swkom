@@ -26,6 +26,7 @@ public class HopArrivalEntity {
     private String code;
 
     @Column
+    @Pattern(regexp = "^[a-zA-ZßÄÖÜäöü/\\d \\-]*$")
     private String description;
 
     @Column

@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(classes={ErrorRepository.class})
+@SpringBootTest //(classes={ErrorRepository.class})
 public class ErrorRepositoryTest {
     @Autowired
     private ErrorRepository errorRepository;
