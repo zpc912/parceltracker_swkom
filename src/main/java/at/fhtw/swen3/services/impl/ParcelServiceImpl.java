@@ -4,6 +4,7 @@ import at.fhtw.swen3.persistence.entities.ParcelEntity;
 import at.fhtw.swen3.persistence.repositories.ParcelRepository;
 import at.fhtw.swen3.persistence.repositories.RecipientRepository;
 import at.fhtw.swen3.services.ParcelService;
+import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.mapper.ParcelMapper;
 import at.fhtw.swen3.services.validation.Validator;
@@ -22,14 +23,34 @@ public class ParcelServiceImpl implements ParcelService {
     private final RecipientRepository recipientRepository;
 
 
-    @Override
-    public void submitNewParcel(ParcelEntity parcelEntity) {
+    /*@Override
+    public NewParcelInfo submitNewParcel(ParcelEntity parcelEntity) {
+        NewParcelInfo newParcelInfo = new NewParcelInfo();
+
+        parcelEntity.setTrackingId("PYJRB4HZ6");
+        log.info("Tracking ID for new Parcel: PYJRB4HZ6");
+
+        parcelEntity.setFutureHops(new ArrayList<>());
+        parcelEntity.setVisitedHops(new ArrayList<>());
+
         this.validator.validate(parcelEntity);
+
         this.recipientRepository.save(parcelEntity.getSender());
         this.recipientRepository.save(parcelEntity.getRecipient());
         this.parcelRepository.save(parcelEntity);
 
+        newParcelInfo = ParcelMapper.INSTANCE.entityToNewParcelInfoDto(parcelEntity);
         log.info("New parcel submitted: " + parcelEntity);
+
+        return newParcelInfo;
+    }*/
+
+
+    @Override
+    public NewParcelInfo submitNewParcel(Parcel parcel) {
+        ParcelEntity parcelEntity = ParcelMapper.INSTANCE.dtoToEntity(null, null, parcel);
+        parcelRepository.save(parcelEntity);
+        log.info("New Parcel submitted");
     }
 
 
