@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public interface ParcelService {
 
-    ParcelEntity submitNewParcel(Parcel parcel);
+    NewParcelInfo submitNewParcel(ParcelEntity parcelEntity);
 
     List<Parcel> getAllParcels();
 
