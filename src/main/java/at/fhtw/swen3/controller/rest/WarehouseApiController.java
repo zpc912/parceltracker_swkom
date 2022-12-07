@@ -1,7 +1,6 @@
-package at.fhtw.swen3.services.impl;
+package at.fhtw.swen3.controller.rest;
 
 
-import at.fhtw.swen3.services.WarehouseApi;
 import at.fhtw.swen3.services.WarehouseService;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
 import at.fhtw.swen3.services.dto.Hop;
