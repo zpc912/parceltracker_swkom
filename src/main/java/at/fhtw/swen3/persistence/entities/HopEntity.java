@@ -5,24 +5,22 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-@Entity
-@Data
-@Builder
+@Entity(name = "t_hop")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "t_hop")
+//@Table(name = "t_hop")
 public class HopEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    //@Column(name = "id", nullable = false)
     private Long id;
 
     @Column
     private String hopType;
 
-    @Column(name = "code")
+    //@Column(name = "code")
     @Pattern(regexp = "^[A-Za-zÄÖÜäöüß0-9\\s\\-]+$")
     private String code;
 
