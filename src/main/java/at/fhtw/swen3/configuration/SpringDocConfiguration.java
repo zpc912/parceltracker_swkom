@@ -46,8 +46,8 @@ public class SpringDocConfiguration {
     }
 
 
-    /*@Bean
+    @Bean
     public ErrorService errorService(ErrorRepository errorRepository) {
         return new ErrorServiceImpl(errorRepository);
-    }*/
+    }
 }

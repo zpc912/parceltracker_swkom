@@ -25,48 +25,4 @@ public class WarehouseServiceImpl implements WarehouseService {
 
     @Autowired
     private WarehouseRepository warehouseRepository;
-    @Autowired
-    private WarehouseNextHopsRepository warehouseNextHopsRepository;
-    @Autowired
-    private HopRepository hopRepository;
-    @Autowired
-    private GeoCoordinateRepository geoCoordinateRepository;
-    private Validator myValidator;
-
-    private WarehouseEntity setCorrectHopTypes(WarehouseEntity warehouse) {
-        List<String> allowedTypes = new ArrayList<String>() {{
-            add("hop");
-            add("transferwarehouse");
-            add("truck");
-            add("warehouse");
-        }};
-        for (WarehouseNextHopsEntity nextHop : warehouse.getNextHops()) {
-            String nextHopType = nextHop.getHop().getHopType();
-            if (!allowedTypes.contains(nextHopType)) {
-                nextHop.getHop().setHopType("hop");
-            }
-        }
-        return warehouse;
-    }
-
-    @Override
-    public void importWarehouses(Warehouse warehouse) throws Exception {
-        WarehouseEntity warehouseEntity = WarehouseMapper.INSTANCE.dtoToEntity(warehouse);
-        warehouseEntity = setCorrectHopTypes(warehouseEntity);
-        try {
-            for (WarehouseNextHopsEntity nextHop : warehouseEntity.getNextHops()) {
-                GeoCoordinateEntity newGeoCoordinateEntity = geoCoordinateRepository.save(nextHop.getHop().getLocationCoordinates());
-                nextHop.getHop().setLocationCoordinates(newGeoCoordinateEntity);
-                HopEntity newHopEntity = hopRepository.save(nextHop.getHop());
-                nextHop.setHop(newHopEntity);
-                nextHop.setWarehouse(warehouseEntity);
-            }
-            GeoCoordinateEntity newGeoCoordinateEntity = geoCoordinateRepository.save(warehouseEntity.getLocationCoordinates());
-            warehouseEntity.setLocationCoordinates(newGeoCoordinateEntity);
-
-            WarehouseEntity newWarehouseEntity = warehouseRepository.save(warehouseEntity);
-        } catch (Exception e) {
-            throw new Exception("Failed :( -> ", e);
-        }
-    }
 }
