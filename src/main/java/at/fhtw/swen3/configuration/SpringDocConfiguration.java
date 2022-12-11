@@ -1,23 +1,16 @@
 package at.fhtw.swen3.configuration;
 
-import at.fhtw.swen3.persistence.repositories.ErrorRepository;
 import at.fhtw.swen3.persistence.repositories.ParcelRepository;
 import at.fhtw.swen3.persistence.repositories.RecipientRepository;
-import at.fhtw.swen3.services.ErrorService;
 import at.fhtw.swen3.services.ParcelService;
-import at.fhtw.swen3.services.impl.ErrorServiceImpl;
 import at.fhtw.swen3.services.impl.ParcelServiceImpl;
-import at.fhtw.swen3.services.validation.Validator;
+import at.fhtw.swen3.services.validation.MyValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.Contact;
-import io.swagger.v3.oas.models.info.License;
-import io.swagger.v3.oas.models.Components;
-import io.swagger.v3.oas.models.security.SecurityScheme;
-import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class SpringDocConfiguration {
@@ -40,10 +33,10 @@ public class SpringDocConfiguration {
     }
 
 
-    @Bean
-    public ParcelService parcelService(Validator validator, ParcelRepository parcelRepository, RecipientRepository recipientRepository) {
-        return new ParcelServiceImpl(validator, parcelRepository, recipientRepository);
-    }
+//    @Bean
+//    public ParcelService parcelService(MyValidator myValidator, ParcelRepository parcelRepository, RecipientRepository recipientRepository) {
+//        return new ParcelServiceImpl(myValidator, parcelRepository, recipientRepository);
+//    }
 
 
     /*@Bean

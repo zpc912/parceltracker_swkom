@@ -5,7 +5,7 @@ import at.fhtw.swen3.persistence.repositories.WarehouseRepository;
 import at.fhtw.swen3.services.WarehouseService;
 import at.fhtw.swen3.services.dto.Warehouse;
 import at.fhtw.swen3.services.mapper.WarehouseMapperImpl;
-import at.fhtw.swen3.services.validation.Validator;
+import at.fhtw.swen3.services.validation.MyValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class WarehouseServiceImpl implements WarehouseService {
     public void submitNewWarehouse(Warehouse warehouse) {
         try {
             log.info("Submitting new warehouse: " + warehouse);
-            Validator.getInstance().validate(warehouse);
+            MyValidator.getInstance().validate(warehouse);
             WarehouseEntity warehouseEntity = mapper.warehouseToWarehouseEntity(warehouse);
             repository.save(warehouseEntity);
         }catch (ConstraintViolationException exception){

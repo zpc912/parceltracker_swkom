@@ -33,4 +33,8 @@ public class HopArrivalEntity {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime dateTime;
 
+    @Column
+    @ManyToOne
+    @JoinColumn(name = "parcel")
+    private ParcelEntity parcel;
 }

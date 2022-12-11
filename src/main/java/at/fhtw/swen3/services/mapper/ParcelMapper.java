@@ -10,21 +10,11 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface ParcelMapper {
-    ParcelMapper INSTANCE = Mappers.getMapper(ParcelMapper.class);
+    Parcel parcelEntityToParcel (ParcelEntity parcelEntity);
+    ParcelEntity parcelToParcelEntity (Parcel parcel);
 
-    /*@Mapping(source="parcel.weight", target = "weight")
-    @Mapping(source="parcel.recipient", target = "recipient")
-    @Mapping(source="parcel.sender", target = "sender")
-    @Mapping(source="newParcelInfo.trackingId", target = "trackingId")
-    @Mapping(source="trackingInformation.state", target = "state")
-    @Mapping(source="trackingInformation.futureHops", target = "futureHops")
-    @Mapping(source="trackingInformation.visitedHops", target = "visitedHops")*/
-    ParcelEntity dtoToEntity(NewParcelInfo newParcelInfo, TrackingInformation trackingInformation, Parcel parcel);
+    NewParcelInfo parcelEntityToNewParcelInfo (ParcelEntity parcelEntity);
+    ParcelEntity newParcelInfoToParcelEntity (NewParcelInfo newParcelInfo);
 
-    TrackingInformation entityToTrackingInformationDto(ParcelEntity parcel);
-    NewParcelInfo entityToNewParcelInfoDto(ParcelEntity parcel);
-    Parcel entityToParcelDto(ParcelEntity parcel);
-
-    /*Parcel entityToDto(ParcelEntity parcelEntity);
-    ParcelEntity dtoToEntity(Parcel parcel);*/
-}
+    TrackingInformation parcelEntityToTrackingInformation (ParcelEntity parcelEntity);
+    ParcelEntity trackingInformationToParcelEntity (TrackingInformation trackingInformation);}

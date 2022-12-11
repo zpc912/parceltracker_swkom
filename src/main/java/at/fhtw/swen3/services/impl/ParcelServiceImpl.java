@@ -1,67 +1,107 @@
 package at.fhtw.swen3.services.impl;
 
 import at.fhtw.swen3.persistence.entities.ParcelEntity;
+import at.fhtw.swen3.persistence.enums.StateEnum;
 import at.fhtw.swen3.persistence.repositories.ParcelRepository;
-import at.fhtw.swen3.persistence.repositories.RecipientRepository;
 import at.fhtw.swen3.services.ParcelService;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
-import at.fhtw.swen3.services.mapper.ParcelMapper;
-import at.fhtw.swen3.services.validation.Validator;
+import at.fhtw.swen3.services.dto.TrackingInformation;
+import at.fhtw.swen3.services.mapper.ParcelMapperImpl;
+import at.fhtw.swen3.services.validation.MyValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.HibernateError;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import javax.validation.ConstraintViolationException;
 import java.util.List;
+import java.util.Optional;
 
 
 @RequiredArgsConstructor
 @Slf4j
+@Service
+@Transactional
 public class ParcelServiceImpl implements ParcelService {
-    private final Validator validator;
-    private final ParcelRepository parcelRepository;
-    private final RecipientRepository recipientRepository;
+    private final ParcelRepository repository;
+    private ParcelMapperImpl mapper = new ParcelMapperImpl();
 
+    //public ParcelServiceImpl(ParcelRepository repo) { repository = repo; }
 
-    @Override
-    public NewParcelInfo submitNewParcel(ParcelEntity parcelEntity) {
-        this.recipientRepository.save(parcelEntity.getSender());
-        this.recipientRepository.save(parcelEntity.getRecipient());
-        this.parcelRepository.save(parcelEntity);
-
-        NewParcelInfo newParcelInfo = ParcelMapper.INSTANCE.entityToNewParcelInfoDto(parcelEntity);
-        log.info("New parcel submitted: " + parcelEntity.getTrackingId());
-
-        return newParcelInfo;
+    public void submitNewParcel(Parcel parcel) {
+        try {
+            log.info("Submitting new parcel: " + parcel);
+            MyValidator.getInstance().validate(parcel);
+            ParcelEntity parcelEntity = mapper.parcelToParcelEntity(parcel);
+            repository.save(parcelEntity);
+        }catch (ConstraintViolationException exception){
+            log.warn("Constraint violation: " + exception);
+            return;
+        }
     }
 
+    @Override
+    public void reportParcelHop(){
+        //TODO
+    }
 
     @Override
-    public List<Parcel> getAllParcels() {
-        List<Parcel> parcelDtos = new ArrayList<>();
-        List<ParcelEntity> parcelEntities = this.parcelRepository.findAll();
+    public Optional<Parcel> updateStatus(String trackingId, StateEnum state){
+        List<ParcelEntity> list = repository.findByTrackingId(trackingId);
 
-        for(ParcelEntity parcelEntity : parcelEntities) {
-            parcelDtos.add(ParcelMapper.INSTANCE.entityToParcelDto(parcelEntity));
+        if(list.isEmpty()){
+            log.warn("Status list is empty!");
+            return Optional.empty();
         }
 
-        log.info("Get all parcels");
-        return parcelDtos;
+        ParcelEntity parcelEntity = list.get(0);
+        parcelEntity.setState(state);
+        repository.save(parcelEntity);
+        log.info("Status updated");
+
+        return Optional.of(mapper.parcelEntityToParcel(parcelEntity));
     }
 
-
     @Override
-    public void updateParcel(Long id, ParcelEntity parcelEntity) {
-        this.parcelRepository.save(parcelEntity);
+    public Optional<NewParcelInfo> createParcel(Parcel parcel) throws ConstraintViolationException {
 
-        log.info("Parcel with ID " + parcelEntity.getId() + " updated: " + parcelEntity);
+        ParcelEntity parcelEntity = mapper.parcelToParcelEntity(parcel);
+
+        parcelEntity.setTrackingId("PYJRB4HZ6");
+
+        try{
+            MyValidator.getInstance().validate(parcelEntity);
+            MyValidator.getInstance().validate(parcelEntity.getRecipient());
+            MyValidator.getInstance().validate(parcelEntity.getSender());
+        } catch (HibernateError e) {
+            log.warn("Invalid Parcel");
+            return Optional.empty();
+        }
+
+        repository.save(parcelEntity);
+
+        log.info("Parcel created");
+        return Optional.of(mapper.parcelEntityToNewParcelInfo(parcelEntity));
     }
 
+    @Override
+    public Optional<TrackingInformation> getTrackingInformation(String trackingId){
+        List<ParcelEntity> list = repository.findByTrackingId(trackingId);
+
+        if(list.isEmpty()){
+            log.warn("TrackingInformation list is empty!");
+            return Optional.empty();
+        }
+
+        log.info("Return TrackingInformation");
+
+        return Optional.of(mapper.parcelEntityToTrackingInformation(list.get(0)));
+    }
 
     @Override
-    public void deleteParcel(Long id) {
-        this.parcelRepository.deleteById(id);
+    public void transitionParcel(Parcel parcel){
 
-        log.info("Parcel with ID " + id + " deleted");
     }
 }

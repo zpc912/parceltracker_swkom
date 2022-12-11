@@ -134,7 +134,7 @@ public class ParcelMapperTest {
     /*@Test
     void ValidationFalseTest() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
+        MyValidator validator = factory.getValidator();
 
         RecipientEntity recipient = new RecipientEntity();
         recipient.setName("Max");
