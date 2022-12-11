@@ -33,13 +33,4 @@ public class HopArrivalEntity {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime dateTime;
 
-    //@Column(name = "visitedhop")
-    //ManyToOne
-    //@JoinColumn(name = "id_trackingInformation", nullable = false, updatable = false)
-    //private TrackingInformationEntity visitedHop;
-
-    //@Column(name = "futurehop")
-    //@ManyToOne
-    //@JoinColumn(name = "id_trackingInformation", nullable = false, updatable = false)
-    //private TrackingInformationEntity futureHop;
 }
