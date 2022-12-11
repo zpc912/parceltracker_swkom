@@ -33,7 +33,6 @@ public class ParcelApiController implements ParcelApi {
 
     private final NativeWebRequest request;
     private final ParcelService parcelService;
-    //private final WarehouseService warehouseService;
 
     @Autowired
     public ParcelApiController(NativeWebRequest request, ParcelService parcelService) {
@@ -43,7 +42,7 @@ public class ParcelApiController implements ParcelApi {
     }
 
 
-    @Override
+    /*@Override
     public Optional<NativeWebRequest> getRequest() {
         return Optional.ofNullable(request);
     }
@@ -121,5 +120,5 @@ public class ParcelApiController implements ParcelApi {
         //newParcelInfo.setTrackingId("VYORB4HZ6");
 
         return new ResponseEntity<NewParcelInfo>(HttpStatus.OK);
-    }
+    }*/
 }

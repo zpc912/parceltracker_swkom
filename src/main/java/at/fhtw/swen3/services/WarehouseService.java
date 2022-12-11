@@ -5,5 +5,4 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface WarehouseService {
-    void importWarehouses(Warehouse warehouse) throws Exception;
 }

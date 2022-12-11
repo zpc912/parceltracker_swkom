@@ -1,13 +1,14 @@
 package at.fhtw.swen3.persistence.entities;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
 @Data
-@Builder
+@SuperBuilder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -38,13 +39,4 @@ public class HopEntity {
     @OneToOne
     @JoinColumn(name = "fk_location_coordinates")
     private GeoCoordinateEntity locationCoordinates;
-
-    public HopEntity(String code, String hopType, String description, Integer processingDelayMins, String locationName, GeoCoordinateEntity locationCoordinates) {
-        this.code = code;
-        this.hopType = hopType;
-        this.description = description;
-        this.processingDelayMins = processingDelayMins;
-        this.locationName = locationName;
-        this.locationCoordinates = locationCoordinates;
-    }
 }
