@@ -12,11 +12,11 @@ import java.util.Objects;
 
 @Entity
 @Data
-@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "t_warehouse")
 public class WarehouseEntity extends HopEntity {
     @Id
