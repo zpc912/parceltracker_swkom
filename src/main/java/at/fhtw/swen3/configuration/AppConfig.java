@@ -3,6 +3,8 @@ package at.fhtw.swen3.configuration;
 import at.fhtw.swen3.persistence.repositories.ErrorRepository;
 import at.fhtw.swen3.persistence.repositories.ParcelRepository;
 import at.fhtw.swen3.persistence.repositories.RecipientRepository;
+import at.fhtw.swen3.services.ErrorService;
+import at.fhtw.swen3.services.ParcelService;
 import at.fhtw.swen3.services.impl.ErrorServiceImpl;
 import at.fhtw.swen3.services.impl.ParcelServiceImpl;
 import at.fhtw.swen3.services.validation.Validator;
